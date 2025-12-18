@@ -3,54 +3,83 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Jeffrey Thaw - Digital Business Card</title>
-  <link rel="stylesheet" href="styles.css"/>
+  <title>Digital Business Card</title>
+  <link rel="stylesheet" href="styles.css?v=2"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
   <main class="wrap">
-    <section class="card">
-      <!-- Compact Header -->
+    <section class="card" aria-label="Digital business card">
+
+      <!-- Header -->
       <header class="profile-header">
-        <img id="photo" class="avatar" src="assets/photo.jpg" alt="Jeffrey Thaw"/>
+        <img id="photo" class="avatar" alt="Profile photo"/>
+
         <div class="info">
-          <h1 class="name" id="name">Jeffrey Thaw</h1>
-          <p class="title" id="title">Service Manager</p>
-          <p class="company" id="company">WE ENGINEERING PTE. LTD.</p>
+          <h1 class="name" id="name">—</h1>
+          <p class="title" id="title">—</p>
+          <p class="company" id="company">—</p>
         </div>
-        <img src="assets/logo.png" class="logo" alt="WE Logo"/>
+
+        <div class="logoWrap" aria-hidden="true">
+          <img src="assets/logo.png" class="logo" alt="WE Logo"/>
+        </div>
       </header>
 
-      <!-- Compact Contacts -->
+      <!-- Contact rows -->
       <div class="contacts">
-        <button class="contact-row" id="phoneRow" type="button">
-          <span class="icon">📞</span>
-          <span class="value" id="phone">+65 9335 6828</span>
+        <button class="contact-row" id="phoneRow" type="button" title="Tap to copy">
+          <span class="icon" aria-hidden="true">📞</span>
+          <span class="value" id="phone">—</span>
+          <span class="chip">Copy</span>
         </button>
-        <button class="contact-row" id="emailRow" type="button">
-          <span class="icon">✉️</span>
-          <span class="value" id="email">jeffrey@we-engineering.net</span>
+
+        <button class="contact-row" id="emailRow" type="button" title="Tap to copy">
+          <span class="icon" aria-hidden="true">✉️</span>
+          <span class="value" id="email">—</span>
+          <span class="chip">Copy</span>
         </button>
-        <a class="contact-row link" id="websiteRow" href="https://we-engineering-site.vercel.app" target="_blank" rel="noreferrer">
-          <span class="icon">🌐</span>
-          <span class="value" id="website">we-engineering-site.vercel.app</span>
+
+        <a class="contact-row link" id="websiteRow" href="#" target="_blank" rel="noreferrer" title="Open website">
+          <span class="icon" aria-hidden="true">🌐</span>
+          <span class="value" id="website">—</span>
+          <span class="chip">Open</span>
         </a>
       </div>
 
-      <!-- Compact QR -->
-      <div class="qr-section">
-        <p class="qr-title">Scan to save contact</p>
-        <div class="qr-box">
-          <img id="qrImg" src="assets/qr.png" alt="QR Code"/>
+      <!-- QR section with tabs -->
+      <section class="qr-section" aria-label="QR section">
+        <div class="qr-head">
+          <div>
+            <p class="qr-title" id="qrTitle">Scan to save contact</p>
+            <p class="qr-sub" id="qrSub">Offline vCard QR</p>
+          </div>
+
+          <div class="qrTabs" role="tablist" aria-label="QR mode">
+            <button class="tab active" id="tabVcf" type="button" role="tab">Save</button>
+            <button class="tab" id="tabUrl" type="button" role="tab">Open</button>
+          </div>
         </div>
+
+        <div class="qr-box">
+          <img id="qrImg" alt="QR Code"/>
+        </div>
+      </section>
+
+      <!-- Actions -->
+      <div class="actions">
+        <a class="btn primary" id="saveBtn" href="#" download>Save Contact (.vcf)</a>
+        <a class="btn secondary" id="navBtn" href="#" target="_blank" rel="noreferrer">Navigate to Office</a>
       </div>
 
-      <!-- Compact Actions -->
-      <div class="actions">
-        <a class="btn primary" id="saveBtn" href="assets/contact.vcf" download>Save Contact</a>
-        <a class="btn secondary" id="navBtn" href="https://maps.google.com/?q=WE+Engineering+Pte+Ltd" target="_blank" rel="noreferrer">Navigate to Office</a>
-      </div>
+      <p class="footnote">
+        Tip: Share <span class="mono">/u/&lt;id&gt;</span> or <span class="mono">/card.html?id=&lt;id&gt;</span>
+      </p>
     </section>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
   </main>
 
   <script src="app.js"></script>
