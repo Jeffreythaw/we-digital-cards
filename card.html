@@ -8,36 +8,71 @@
 </head>
 <body>
   <main class="wrap">
-    <section class="card">
-      <div class="brand">
-        <img src="assets/logo.png" class="logo" alt="Logo">
-        <div class="company" id="company"></div>
-      </div>
-
-      <div class="top">
-        <div>
-          <div class="role" id="title"></div>
-          <div class="name" id="name"></div>
+    <section class="card" aria-label="Digital business card">
+      <header class="head">
+        <div class="brand">
+          <div class="logoWrap" aria-hidden="true">
+            <img src="assets/logo.png" class="logo" alt="WE logo">
+          </div>
+          <div class="brandText">
+            <div class="company" id="company"></div>
+            <div class="tagline">Digital Business Card</div>
+          </div>
         </div>
-        <img id="photo" class="avatar" alt="Photo"/>
+
+        <img id="photo" class="avatar" alt="Profile photo"/>
+      </header>
+
+      <div class="hero">
+        <div class="title" id="title"></div>
+        <div class="name" id="name"></div>
       </div>
 
-      <div class="info">
-        <a id="phone" href="#"></a>
-        <a id="email" href="#"></a>
-        <a id="website" href="#" target="_blank" rel="noreferrer"></a>
+      <div class="contacts">
+        <button class="row" id="phoneRow" type="button">
+          <span class="icon">📞</span>
+          <span class="txt" id="phone"></span>
+          <span class="chip">Tap to copy</span>
+        </button>
+
+        <button class="row" id="emailRow" type="button">
+          <span class="icon">✉️</span>
+          <span class="txt" id="email"></span>
+          <span class="chip">Tap to copy</span>
+        </button>
+
+        <a class="row link" id="websiteRow" href="#" target="_blank" rel="noreferrer">
+          <span class="icon">🌐</span>
+          <span class="txt" id="website"></span>
+          <span class="chip">Open</span>
+        </a>
       </div>
 
-      <div class="qrBox">
-        <img id="qrImg" alt="QR Code" />
-        <div class="hint">Scan to save contact (offline vCard)</div>
-      </div>
+      <section class="qrCard" aria-label="QR code">
+        <div class="qrTop">
+          <div class="qrTitle">Scan to save contact</div>
+          <div class="qrSub">Offline vCard QR</div>
+        </div>
+        <div class="qrBox">
+          <img id="qrImg" alt="QR Code"/>
+        </div>
+      </section>
 
       <div class="actions">
-        <a class="btn primary" id="saveBtn" href="#" download>Save my contact</a>
-        <a class="btn" id="navBtn" href="#" target="_blank" rel="noreferrer">Navigate to office</a>
+        <a class="btn primary" id="saveBtn" href="#" download>
+          Save contact (.vcf)
+        </a>
+        <a class="btn" id="navBtn" href="#" target="_blank" rel="noreferrer">
+          Navigate to office
+        </a>
+      </div>
+
+      <div class="footerNote">
+        Tip: Share your card link like <span class="mono">/card.html?id=xxx</span>
       </div>
     </section>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
   </main>
 
   <script src="app.js"></script>
