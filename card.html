@@ -10,64 +10,47 @@
 <body>
   <main class="wrap">
     <section class="card">
-      <!-- Profile Header -->
+      <!-- Compact Header -->
       <header class="profile-header">
         <img id="photo" class="avatar" src="assets/photo.jpg" alt="Jeffrey Thaw"/>
-        <div class="name-title">
+        <div class="info">
           <h1 class="name" id="name">Jeffrey Thaw</h1>
           <p class="title" id="title">Service Manager</p>
-        </div>
-        <div class="company-logo">
-          <img src="assets/logo.png" class="logo" alt="WE Engineering Logo"/>
           <p class="company" id="company">WE ENGINEERING PTE. LTD.</p>
         </div>
+        <img src="assets/logo.png" class="logo" alt="WE Logo"/>
       </header>
 
-      <!-- Contact Info -->
+      <!-- Compact Contacts -->
       <div class="contacts">
         <button class="contact-row" id="phoneRow" type="button">
           <span class="icon">📞</span>
-          <span class="label">Phone</span>
           <span class="value" id="phone">+65 9335 6828</span>
         </button>
         <button class="contact-row" id="emailRow" type="button">
           <span class="icon">✉️</span>
-          <span class="label">Email</span>
           <span class="value" id="email">jeffrey@we-engineering.net</span>
         </button>
         <a class="contact-row link" id="websiteRow" href="https://we-engineering-site.vercel.app" target="_blank" rel="noreferrer">
           <span class="icon">🌐</span>
-          <span class="label">Website</span>
           <span class="value" id="website">we-engineering-site.vercel.app</span>
         </a>
       </div>
 
-      <!-- QR Code -->
-      <section class="qr-section">
+      <!-- Compact QR -->
+      <div class="qr-section">
         <p class="qr-title">Scan to save contact</p>
-        <p class="qr-subtitle">(Offline vCard)</p>
         <div class="qr-box">
-          <img id="qrImg" src="assets/qr.png" alt="QR Code for vCard"/>
+          <img id="qrImg" src="assets/qr.png" alt="QR Code"/>
         </div>
-      </section>
-
-      <!-- Action Buttons -->
-      <div class="actions">
-        <a class="btn primary" id="saveBtn" href="assets/contact.vcf" download>
-          Save Contact (.vcf)
-        </a>
-        <a class="btn secondary" id="navBtn" href="https://maps.google.com/?q=WE+Engineering+Pte+Ltd" target="_blank" rel="noreferrer">
-          Navigate to Office
-        </a>
       </div>
 
-      <!-- Footer Note -->
-      <p class="footer-note">
-        Tip: Share this card via link — <span class="mono">yourdomain.com/card?id=jeffrey</span>
-      </p>
+      <!-- Compact Actions -->
+      <div class="actions">
+        <a class="btn primary" id="saveBtn" href="assets/contact.vcf" download>Save Contact</a>
+        <a class="btn secondary" id="navBtn" href="https://maps.google.com/?q=WE+Engineering+Pte+Ltd" target="_blank" rel="noreferrer">Navigate to Office</a>
+      </div>
     </section>
-
-    <div class="toast" id="toast" role="status" aria-live="polite"></div>
   </main>
 
   <script src="app.js"></script>
