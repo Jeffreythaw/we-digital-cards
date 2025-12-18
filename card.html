@@ -3,73 +3,68 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Digital Business Card</title>
+  <title>Jeffrey Thaw - Digital Business Card</title>
   <link rel="stylesheet" href="styles.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
   <main class="wrap">
-    <section class="card" aria-label="Digital business card">
-      <header class="head">
-        <div class="brand">
-          <div class="logoWrap" aria-hidden="true">
-            <img src="assets/logo.png" class="logo" alt="WE logo">
-          </div>
-          <div class="brandText">
-            <div class="company" id="company"></div>
-            <div class="tagline">Digital Business Card</div>
-          </div>
+    <section class="card">
+      <!-- Profile Header -->
+      <header class="profile-header">
+        <img id="photo" class="avatar" src="assets/photo.jpg" alt="Jeffrey Thaw"/>
+        <div class="name-title">
+          <h1 class="name" id="name">Jeffrey Thaw</h1>
+          <p class="title" id="title">Service Manager</p>
         </div>
-
-        <img id="photo" class="avatar" alt="Profile photo"/>
+        <div class="company-logo">
+          <img src="assets/logo.png" class="logo" alt="WE Engineering Logo"/>
+          <p class="company" id="company">WE ENGINEERING PTE. LTD.</p>
+        </div>
       </header>
 
-      <div class="hero">
-        <div class="title" id="title"></div>
-        <div class="name" id="name"></div>
-      </div>
-
+      <!-- Contact Info -->
       <div class="contacts">
-        <button class="row" id="phoneRow" type="button">
+        <button class="contact-row" id="phoneRow" type="button">
           <span class="icon">📞</span>
-          <span class="txt" id="phone"></span>
-          <span class="chip">Tap to copy</span>
+          <span class="label">Phone</span>
+          <span class="value" id="phone">+65 9335 6828</span>
         </button>
-
-        <button class="row" id="emailRow" type="button">
+        <button class="contact-row" id="emailRow" type="button">
           <span class="icon">✉️</span>
-          <span class="txt" id="email"></span>
-          <span class="chip">Tap to copy</span>
+          <span class="label">Email</span>
+          <span class="value" id="email">jeffrey@we-engineering.net</span>
         </button>
-
-        <a class="row link" id="websiteRow" href="#" target="_blank" rel="noreferrer">
+        <a class="contact-row link" id="websiteRow" href="https://we-engineering-site.vercel.app" target="_blank" rel="noreferrer">
           <span class="icon">🌐</span>
-          <span class="txt" id="website"></span>
-          <span class="chip">Open</span>
+          <span class="label">Website</span>
+          <span class="value" id="website">we-engineering-site.vercel.app</span>
         </a>
       </div>
 
-      <section class="qrCard" aria-label="QR code">
-        <div class="qrTop">
-          <div class="qrTitle">Scan to save contact</div>
-          <div class="qrSub">Offline vCard QR</div>
-        </div>
-        <div class="qrBox">
-          <img id="qrImg" alt="QR Code"/>
+      <!-- QR Code -->
+      <section class="qr-section">
+        <p class="qr-title">Scan to save contact</p>
+        <p class="qr-subtitle">(Offline vCard)</p>
+        <div class="qr-box">
+          <img id="qrImg" src="assets/qr.png" alt="QR Code for vCard"/>
         </div>
       </section>
 
+      <!-- Action Buttons -->
       <div class="actions">
-        <a class="btn primary" id="saveBtn" href="#" download>
-          Save contact (.vcf)
+        <a class="btn primary" id="saveBtn" href="assets/contact.vcf" download>
+          Save Contact (.vcf)
         </a>
-        <a class="btn" id="navBtn" href="#" target="_blank" rel="noreferrer">
-          Navigate to office
+        <a class="btn secondary" id="navBtn" href="https://maps.google.com/?q=WE+Engineering+Pte+Ltd" target="_blank" rel="noreferrer">
+          Navigate to Office
         </a>
       </div>
 
-      <div class="footerNote">
-        Tip: Share your card link like <span class="mono">/card.html?id=xxx</span>
-      </div>
+      <!-- Footer Note -->
+      <p class="footer-note">
+        Tip: Share this card via link — <span class="mono">yourdomain.com/card?id=jeffrey</span>
+      </p>
     </section>
 
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
