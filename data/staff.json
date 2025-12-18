@@ -9,5 +9,16 @@
     "address": "WCEGA Tower, 21 Bukit Batok Crescent, #29-81, Singapore 658065",
     "website": "https://we-engineering-site.vercel.app",
     "photo": "assets/photos/jeffrey.jpg"
+  },
+  {
+    "id": "zawzawwin",
+    "name": "Zaw Zaw Win",
+    "title": "Assistant Manager",
+    "company": "WE ENGINEERING PTE. LTD.",
+    "phone": "+65 8868 4070",
+    "email": "",
+    "address": "WCEGA Tower, 21 Bukit Batok Crescent, #29-81, Singapore 658065",
+    "website": "https://we-engineering-site.vercel.app",
+    "photo": "assets/photos/zawzawwin.jpg"
   }
 ]
