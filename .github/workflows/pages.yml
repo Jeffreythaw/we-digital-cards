@@ -29,9 +29,6 @@ jobs:
       - name: Generate staff.json + VCF + QR
         run: python scripts/build.py
 
-      - name: Configure Pages
-        uses: actions/configure-pages@v5
-
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
