@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Digital Business Card</title>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+  <main class="wrap">
+    <section class="card">
+      <div class="brand">
+        <img src="assets/logo.png" class="logo" alt="Logo">
+        <div class="company" id="company"></div>
+      </div>
+
+      <div class="top">
+        <div>
+          <div class="role" id="title"></div>
+          <div class="name" id="name"></div>
+        </div>
+        <img id="photo" class="avatar" alt="Photo"/>
+      </div>
+
+      <div class="info">
+        <a id="phone" href="#"></a>
+        <a id="email" href="#"></a>
+        <a id="website" href="#" target="_blank" rel="noreferrer"></a>
+      </div>
+
+      <div class="qrBox">
+        <img id="qrImg" alt="QR Code" />
+        <div class="hint">Scan to save contact (offline vCard)</div>
+      </div>
+
+      <div class="actions">
+        <a class="btn primary" id="saveBtn" href="#" download>Save my contact</a>
+        <a class="btn" id="navBtn" href="#" target="_blank" rel="noreferrer">Navigate to office</a>
+      </div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

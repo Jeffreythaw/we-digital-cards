@@ -1,0 +1,43 @@
+body{
+  margin:0; min-height:100vh; display:grid; place-items:center;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
+  background: linear-gradient(180deg,#0b1020,#050714);
+  padding: 24px;
+}
+.wrap{width:min(420px,94vw)}
+.card{
+  background: linear-gradient(180deg,#1f4fd6,#163aa9);
+  border-radius:26px;
+  padding:22px;
+  color:white;
+  box-shadow: 0 30px 80px rgba(0,0,0,.45);
+}
+.brand{display:flex;align-items:center;gap:12px}
+.logo{width:40px;height:40px;background:white;border-radius:12px;padding:6px;object-fit:contain}
+.company{font-weight:900;letter-spacing:.08em;font-size:12px;opacity:.9}
+.top{display:flex;justify-content:space-between;align-items:flex-start;margin-top:16px;gap:14px}
+.role{opacity:.85;font-weight:900;letter-spacing:.12em}
+.name{font-size:34px;font-weight:1000;line-height:1.05;margin-top:6px}
+.avatar{width:70px;height:70px;border-radius:999px;border:4px solid rgba(255,255,255,.85);object-fit:cover}
+.info{display:grid;gap:8px;margin-top:14px}
+.info a{color:white;text-decoration:none;opacity:.92;font-weight:800}
+.info a:hover{text-decoration:underline;opacity:1}
+.qrBox{
+  margin-top:18px;
+  background: rgba(255,255,255,.14);
+  border:1px solid rgba(255,255,255,.20);
+  border-radius:18px;
+  padding:14px;
+  display:grid; place-items:center; gap:10px;
+}
+#qrImg{width:220px;height:220px;background:white;border-radius:14px;padding:10px}
+.hint{font-size:12px;opacity:.9;text-align:center}
+.actions{display:grid;gap:10px;margin-top:16px}
+.btn{
+  display:block;text-align:center;
+  padding:12px 14px;border-radius:16px;
+  background: rgba(255,255,255,.12);
+  border:1px solid rgba(255,255,255,.18);
+  color:white;text-decoration:none;font-weight:1000;
+}
+.btn.primary{background: rgba(255,255,255,.95); color:#0b1020; border:none;}

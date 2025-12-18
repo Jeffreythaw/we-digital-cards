@@ -1,0 +1,13 @@
+[
+  {
+    "id": "jeffrey",
+    "name": "Jeffrey Thaw",
+    "title": "Service Manager",
+    "company": "WE ENGINEERING PTE. LTD.",
+    "phone": "+65 9335 6828",
+    "email": "jeffrey@we-engineering.net",
+    "address": "WCEGA Tower, 21 Bukit Batok Crescent, #29-81, Singapore 658065",
+    "website": "https://we-engineering-site.vercel.app",
+    "photo": "assets/photos/jeffrey.jpg"
+  }
+]
