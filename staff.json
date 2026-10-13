@@ -2,6 +2,8 @@
   {
     "id": "jeffrey",
     "name": "Jeffrey Thaw",
+    "given_name": "Jeffrey",
+    "family_name": "Thaw",
     "title": "Service Manager",
     "company": "WE ENGINEERING PTE. LTD.",
     "phone": "+65 9335 6828",
@@ -13,6 +15,8 @@
   {
     "id": "zawzawwin",
     "name": "Zaw Zaw Win",
+    "given_name": "Zaw Zaw",
+    "family_name": "Win",
     "title": "Assistant Manager",
     "company": "WE ENGINEERING PTE. LTD.",
     "phone": "+65 8868 4070",
