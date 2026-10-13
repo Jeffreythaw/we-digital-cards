@@ -4,23 +4,32 @@
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>WE Digital Cards</title>
-  <link rel="stylesheet" href="styles.css"/>
+  <link rel="stylesheet" href="styles.css?v=3"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
   <main class="wrap">
-    <section class="card">
+    <section class="card landing">
       <div class="brand">
-        <img src="assets/logo.png" class="logo" alt="Logo">
+        <img src="assets/logo.png" class="logo" alt="WE Engineering logo">
         <div class="company">WE ENGINEERING</div>
       </div>
 
-      <div style="margin-top:18px;font-weight:1000;font-size:22px">Digital Business Cards</div>
-      <div style="margin-top:10px;opacity:.92;font-weight:800">
-        Open a card using:
-        <div style="margin-top:10px;font-weight:1000">
-          <a style="color:#fff" href="card.html?id=jeffrey">card.html?id=jeffrey</a>
-        </div>
-      </div>
+      <h1 class="landing-title">Digital Business Cards</h1>
+      <p class="landing-lead">Open a staff card:</p>
+
+      <ul class="staff-list">
+        <li>
+          <a class="staff-link" href="card.html?id=jeffrey">Jeffrey Thaw</a>
+          <span class="staff-meta">card.html?id=jeffrey · /u/jeffrey/</span>
+        </li>
+        <li>
+          <a class="staff-link" href="card.html?id=zawzawwin">Zaw Zaw Win</a>
+          <span class="staff-meta">card.html?id=zawzawwin · /u/zawzawwin/</span>
+        </li>
+      </ul>
     </section>
   </main>
 </body>

@@ -1,0 +1,55 @@
+# Recommended GitHub Pages workflow (requires a token/user with `workflow` scope to land in .github/workflows/pages.yml).
+# Diff vs current: pip -r requirements.txt; assemble _site without scripts/, data/, .DS_Store; github-pages environment.
+name: Build & Deploy Cards to GitHub Pages
+
+on:
+  push:
+    branches: ["main"]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install deps
+        run: pip install -r requirements.txt
+
+      - name: Generate staff.json + VCF + QR + /u redirects
+        run: python scripts/build.py
+
+      - name: Assemble public site (exclude scripts/, data/, junk)
+        run: |
+          rm -rf _site
+          mkdir -p _site
+          cp index.html card.html app.js styles.css staff.json _site/
+          cp -R assets contact qr qr_url u _site/
+          find _site -name .DS_Store -delete
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
