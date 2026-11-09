@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <base href="../">
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+  <meta name="theme-color" content="#0f1d3a"/>
+  <title>Digital Business Card</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;0,800;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=6"/>
+</head>
+<body data-card-id="jeffrey">
+  <main class="card" aria-label="Digital business card">
+    <header class="hero" aria-hidden="true">
+      <div class="hero-mark"></div>
+    </header>
+
+    <img id="photo" class="avatar" alt="Profile photo"/>
+
+    <section class="identity">
+      <h1 class="name" id="name">—</h1>
+      <p class="title" id="title">—</p>
+      <p class="company" id="company">—</p>
+      <p class="uen" id="uen"></p>
+    </section>
+
+    <section class="contacts">
+      <a class="contact-row" id="phone" href="#">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
+        <span class="value" id="phoneText">—</span>
+      </a>
+      <a class="contact-row" id="email" href="#">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+        <span class="value" id="emailText">—</span>
+      </a>
+    </section>
+
+    <section class="save-row">
+      <a class="btn-save" id="saveBtn" href="#" download>Save contact details</a>
+      <button class="qr-thumb" id="qrThumb" type="button" aria-label="Show QR code full screen">
+        <img src="" alt="" id="qrThumbImg"/>
+        <span>Tap to enlarge</span>
+      </button>
+    </section>
+
+    <section class="office">
+      <a class="address" id="address" href="#" target="_blank" rel="noreferrer">—</a>
+      <a class="website" id="website" href="#" target="_blank" rel="noreferrer">—</a>
+    </section>
+
+    <footer class="footer">
+      <div class="brand">
+        <div class="brand-logo" role="img" aria-label="WE Engineering logo"></div>
+        <p class="tagline">WE ENGINEER SUCCESS</p>
+      </div>
+      <a class="whatsapp" id="whatsapp" href="#" target="_blank" rel="noreferrer" aria-label="WhatsApp" hidden>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.5-.3z"/></svg>
+      </a>
+    </footer>
+  </main>
+
+  <div class="qr-overlay" id="qrOverlay" role="dialog" aria-modal="true" aria-label="QR code" hidden>
+    <button class="qr-close" id="qrClose" type="button" aria-label="Close">&times;</button>
+    <p class="qr-overlay-name" id="qrOverlayName"></p>
+    <div class="qrTabs" role="tablist" aria-label="QR mode">
+      <button class="tab active" data-mode="vcf" type="button" role="tab">Save contact</button>
+      <button class="tab" data-mode="url" type="button" role="tab">Share card</button>
+    </div>
+    <div class="qr-overlay-box">
+      <img class="qr-img" alt="QR code"/>
+    </div>
+    <p class="qr-sub" id="qrSub">Scan to save contact</p>
+  </div>
+
+  <script src="app.js?v=6"></script>
+</body>
+</html>

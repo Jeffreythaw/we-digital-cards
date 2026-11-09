@@ -1,36 +1,21 @@
 function qs(name){ return new URLSearchParams(location.search).get(name); }
 
-function toast(msg){
-  const el = document.getElementById("toast");
-  el.textContent = msg;
-  el.classList.add("show");
-  clearTimeout(window.__toastTimer);
-  window.__toastTimer = setTimeout(() => el.classList.remove("show"), 1200);
-}
-
-async function copyText(text){
-  try{
-    await navigator.clipboard.writeText(text);
-    toast("Copied ✅");
-  }catch{
-    const ta = document.createElement("textarea");
-    ta.value = text;
-    document.body.appendChild(ta);
-    ta.select();
-    document.execCommand("copy");
-    ta.remove();
-    toast("Copied ✅");
-  }
-}
-
 function cleanText(v){
   return (v || "").replace(/\s+/g, " ").trim(); // removes newlines + double spaces
 }
 
+function fail(msg){
+  document.body.innerHTML = "";
+  const p = document.createElement("p");
+  p.style.cssText = "padding:24px;color:#fff";
+  p.textContent = msg;
+  document.body.appendChild(p);
+}
+
 async function load(){
-  const id = qs("id");
+  const id = qs("id") || document.body.dataset.cardId;
   if(!id){
-    document.body.innerHTML = "<p style='padding:24px'>Missing ?id=</p>";
+    fail("Missing card id");
     return;
   }
 
@@ -38,118 +23,93 @@ async function load(){
   const p = staff.find(x => x.id === id);
 
   if(!p){
-    document.body.innerHTML = `<p style='padding:24px'>No staff found for id=${id}</p>`;
+    fail(`No card found for "${id}"`);
     return;
   }
 
-  document.title = `${cleanText(p.name)} — Digital Business Card`;
+  const $ = (elId) => document.getElementById(elId);
 
-  // Elements
-  const nameEl = document.getElementById("name");
-  const titleEl = document.getElementById("title");
-  const companyEl = document.getElementById("company");
-
-  const photoEl = document.getElementById("photo");
-
-  const phoneRow = document.getElementById("phoneRow");
-  const emailRow = document.getElementById("emailRow");
-  const websiteRow = document.getElementById("websiteRow");
-
-  const phoneEl = document.getElementById("phone");
-  const emailEl = document.getElementById("email");
-  const websiteEl = document.getElementById("website");
-
-  const saveBtn = document.getElementById("saveBtn");
-  const navBtn = document.getElementById("navBtn");
-
-  const qrImg = document.getElementById("qrImg");
-  const tabVcf = document.getElementById("tabVcf");
-  const tabUrl = document.getElementById("tabUrl");
-  const qrTitle = document.getElementById("qrTitle");
-  const qrSub = document.getElementById("qrSub");
-
-  // Values
   const nameVal = cleanText(p.name);
-  const titleVal = cleanText(p.title);
-  const companyVal = cleanText(p.company);
-
   const phoneVal = cleanText(p.phone);
+  const phoneDigits = phoneVal.replace(/[^\d+]/g, "");
   const emailVal = cleanText(p.email);
   const websiteVal = cleanText(p.website);
   const addressVal = cleanText(p.address);
 
-  // Fill fields
-  nameEl.textContent = nameVal || "—";
-  titleEl.textContent = titleVal || "—";
-  companyEl.textContent = companyVal || "—";
+  document.title = `${nameVal} | WE Engineering`;
 
-  // Photo
-  photoEl.src = p.photo || "";
-  photoEl.onerror = () => {
-    // fallback if photo missing
-    photoEl.src = "assets/logo.png";
-  };
+  $("name").textContent = nameVal || "—";
+  $("title").textContent = cleanText(p.title) || "—";
+  $("company").textContent = cleanText(p.company) || "—";
+  $("uen").textContent = p.uen ? `(UEN: ${cleanText(p.uen)})` : "";
 
-  // Phone
-  phoneEl.textContent = phoneVal || "—";
+  const photoEl = $("photo");
+  photoEl.src = p.photo || "assets/logo.png";
+  photoEl.onerror = () => { photoEl.src = "assets/logo.png"; };
 
-  // Email (hide if empty)
+  $("phoneText").textContent = phoneVal || "—";
+  $("phone").href = `tel:${phoneDigits}`;
+
   if(emailVal){
-    emailEl.textContent = emailVal;
-    emailRow.style.display = "";
+    $("emailText").textContent = emailVal;
+    $("email").href = `mailto:${emailVal}`;
   }else{
-    emailRow.style.display = "none";
+    $("email").hidden = true;
   }
 
-  // Website
-  const websiteText = websiteVal.replace(/^https?:\/\//, "");
-  websiteEl.textContent = websiteText || "—";
-  websiteRow.href = websiteVal || "#";
+  $("website").textContent = websiteVal.replace(/^https?:\/\//, "") || "—";
+  $("website").href = websiteVal || "#";
 
-  // Buttons
-  saveBtn.href = `contact/${p.id}.vcf`;
-  navBtn.href = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(addressVal);
+  // "WCEGA Tower, 21 Bukit Batok Crescent, #29-81, Singapore 658065"
+  // -> bold building / street + unit / postcode, like the printed card
+  const parts = addressVal.split(",").map(s => s.trim()).filter(Boolean);
+  const addrEl = $("address");
+  addrEl.textContent = "";
+  const strong = document.createElement("strong");
+  strong.textContent = (parts[0] || "").toUpperCase();
+  addrEl.append(strong);
+  if(parts.length > 2){
+    addrEl.append(document.createElement("br"), parts.slice(1, -1).join(", "));
+  }
+  if(parts.length > 1){
+    addrEl.append(document.createElement("br"), parts[parts.length - 1]);
+  }
+  addrEl.href = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(addressVal);
 
-  // 2 QR modes
-  const vcfQr = `qr/${p.id}.png`;
-  const urlQr = `qr_url/${p.id}.png`;
-
-  function showVcf(){
-    qrImg.src = vcfQr;
-    tabVcf.classList.add("active");
-    tabUrl.classList.remove("active");
-    qrTitle.textContent = "Scan to save contact";
-    qrSub.textContent = "Offline vCard QR";
+  if(p.whatsapp){
+    $("whatsapp").href = `https://wa.me/${phoneDigits.replace("+", "")}`;
+    $("whatsapp").hidden = false;
   }
 
-  function showUrl(){
-    qrImg.src = urlQr;
-    tabUrl.classList.add("active");
-    tabVcf.classList.remove("active");
-    qrTitle.textContent = "Scan to open my card";
-    qrSub.textContent = "Web link QR";
+  $("saveBtn").href = `contact/${p.id}.vcf`;
+  $("qrThumbImg").src = `qr/${p.id}.png`;
+
+  function showQr(mode){
+    const isVcf = mode === "vcf";
+    document.querySelectorAll(".qr-img").forEach(img => {
+      img.src = isVcf ? `qr/${p.id}.png` : `qr_url/${p.id}.png`;
+    });
+    $("qrSub").textContent = isVcf ? "Scan to save contact (works offline)" : "Scan to open this card";
+    document.querySelectorAll(".tab[data-mode]").forEach(tab => {
+      tab.classList.toggle("active", tab.dataset.mode === mode);
+    });
   }
 
-  tabVcf.addEventListener("click", showVcf);
-  tabUrl.addEventListener("click", showUrl);
-
-  // Default
-  showVcf();
-
-  // Tap to copy
-  phoneRow.addEventListener("click", () => {
-    if(phoneVal) copyText(phoneVal);
+  document.querySelectorAll(".tab[data-mode]").forEach(tab => {
+    tab.addEventListener("click", () => showQr(tab.dataset.mode));
   });
+  showQr("vcf");
 
-  emailRow.addEventListener("click", () => {
-    if(emailVal) copyText(emailVal);
-  });
+  const overlay = $("qrOverlay");
+  $("qrOverlayName").textContent = nameVal;
 
-  // Optional: right click / long press to copy website
-  websiteRow.addEventListener("contextmenu", (e) => {
-    e.preventDefault();
-    if(websiteVal) copyText(websiteVal);
-  });
+  function openOverlay(){ overlay.hidden = false; document.body.style.overflow = "hidden"; }
+  function closeOverlay(){ overlay.hidden = true; document.body.style.overflow = ""; }
+
+  $("qrThumb").addEventListener("click", openOverlay);
+  $("qrClose").addEventListener("click", closeOverlay);
+  overlay.addEventListener("click", (e) => { if(e.target === overlay) closeOverlay(); });
+  document.addEventListener("keydown", (e) => { if(e.key === "Escape" && !overlay.hidden) closeOverlay(); });
 }
 
 load();

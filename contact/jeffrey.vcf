@@ -1,11 +1,11 @@
 BEGIN:VCARD
 VERSION:3.0
-N:Thaw;Jeffrey;;;
-FN:Jeffrey Thaw
+N:;PYE HEIN THAW @ JEFFREY;;;
+FN:PYE HEIN THAW @ JEFFREY
 ORG:WE ENGINEERING PTE. LTD.
-TITLE:Service Manager
+TITLE:Manager
 TEL;TYPE=CELL:+65 9335 6828
-EMAIL:jeffrey@we-engineering.net
+EMAIL;TYPE=WORK:jeffrey@we-engineering.net
 ADR;TYPE=WORK:;;WCEGA Tower\, 21 Bukit Batok Crescent\, #29-81\, Singapore 658065
-URL:https://we-engineering-site.vercel.app
+URL:https://www.we-engineering.net
 END:VCARD
